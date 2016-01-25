@@ -28,10 +28,10 @@ Let’s say you made a To Do list app, where you can add things to a list and cr
 When you rotate the device, the things you marked as complete are no longer crossed off.
 
 **Question**: Why did this happen?
-<br />Answer:
+<br />Answer: The crossed items weren't saved so that when the device is rotated, the activity is destroyed then recreated without knowing that some of the items were crossed off.
 
 **Question**: How do you fix this issue?
-<br />Answer:
+<br />Answer: You have to save the strikethrough font attributes to onSaveInstance. On the onResume method, you can recall the onSaveInstance and set the new list with certain of the items crossed off.
 
 
 ####Scenario 2:
@@ -41,7 +41,7 @@ The Amazon Kindle Android app allows you to open and read eBooks. You discovered
 When you opened the app again, and opened the book, it started from page 1 (and not page 68 where you left off)!
 
 **Question**: How would you fix this issue?
-<br />**Answer**:
+<br />**Answer**: Need to use shared preferences to store the current page number of data type int in the onPause method so that when the app runs onResume when it is restarted, it goes back to the current page number of the reader.
 
 
 ####Scenario 3:
@@ -51,7 +51,7 @@ Facebook for Android added a feature last year where, if you started writing a c
 Take this scenario. On a post on Facebook, you click the “comment” button (which opens a new CommentActivity). You start writing a comment, and then change your mind by pressing the back key (which closes the CommentActivity). You click on the “comment” button again, and in the newly-opened CommentActivity, the comment you were writing is still there.
 
 **Question**: How would you implement this feature? Be specific; what lifecycle methods would you use in CommentActivity, and what techniques would you use?
-<br />**Answer**:
+<br />**Answer**: For the onPause method in CommentActivity, you would have a shared preferences object where you save the string from the edittext. During the onResume method for the CommentActivity, you recall the saved string residing in the shared preferences and use the settext method for the edittext to set it to the string.
 
 
 
@@ -59,13 +59,13 @@ In your own words…
 ==================
 
 **Question**: What are the methods of the Activity Lifecycle?
-<br />**Answer**: 
+<br />**Answer**: onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy(), and onRestart().
 
 **Question**: What order are the methods called?
-<br />**Answer**: 
+<br />**Answer**: onCreate(), onStart(), onResume(), onPause(), onStop(), onDestroy().
 
 **Question**: What is a bundle?
-<br />**Answer**: 
+<br />**Answer**: Bundle is an object that stores data that you would want to pass between different activities.
 
 **Question**: How do you get the Shared Preferences of an app?
-<br />**Answer**:
+<br />**Answer**: Use the getSharedPreferences method.
